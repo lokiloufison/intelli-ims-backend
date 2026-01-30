@@ -6,15 +6,17 @@ from models import Product
 from sqlalchemy.orm import Session
 app = FastAPI()
 
-app.add_middleware(
-CORSMiddleware,
 origins = [
     "http://localhost:3000",
-    "https://intelliims.vercel.app/", # Add your actual Vercel link here
-],
-allow_credentials=True,
-allow_methods=["*"],
-allow_headers=["*"]
+    "https://your-frontend-name.vercel.app", # REPLACE THIS with your actual Vercel URL
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins, # This allows the specific URLs above
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 database_models.Base.metadata.create_all(bind=engine)
@@ -95,6 +97,7 @@ def delete_product(id:int,db:Session=Depends(get_db)):
             return "product deleted"
         else:    
             return "product not found"
+
 
 
 
