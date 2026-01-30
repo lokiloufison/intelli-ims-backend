@@ -8,7 +8,10 @@ app = FastAPI()
 
 app.add_middleware(
 CORSMiddleware,
-allow_origins=["http://localhost:3000","https://intelliims.vercel.app/"],
+origins = [
+    "http://localhost:3000",
+    "https://intelli-ims-frontend.vercel.app", # Add your actual Vercel link here
+],
 allow_credentials=True,
 allow_methods=["*"],
 allow_headers=["*"]
@@ -92,5 +95,6 @@ def delete_product(id:int,db:Session=Depends(get_db)):
             return "product deleted"
         else:    
             return "product not found"
+
 
 
