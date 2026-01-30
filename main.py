@@ -8,7 +8,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000",
-    "https://intelliims.vercel.app/", # REPLACE THIS with your actual Vercel URL
+    "https://intelliims.vercel.app", # REPLACE THIS with your actual Vercel URL
 ]
 
 app.add_middleware(
@@ -97,6 +97,7 @@ def delete_product(id:int,db:Session=Depends(get_db)):
             return "product deleted"
         else:    
             return "product not found"
+
 
 
 
