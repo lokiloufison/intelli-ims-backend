@@ -10,7 +10,7 @@ app.add_middleware(
 CORSMiddleware,
 origins = [
     "http://localhost:3000",
-    "https://intelli-ims-frontend.vercel.app", # Add your actual Vercel link here
+    "https://intelliims.vercel.app/", # Add your actual Vercel link here
 ],
 allow_credentials=True,
 allow_methods=["*"],
@@ -95,6 +95,7 @@ def delete_product(id:int,db:Session=Depends(get_db)):
             return "product deleted"
         else:    
             return "product not found"
+
 
 
 
